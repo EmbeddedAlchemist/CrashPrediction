@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\NotNullRef">
+      <UniqueIdentifier>{cf1abf43-6ed8-402f-9d0b-8d273600c162}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NotNull\NotNull.cpp">
+      <Filter>源文件\NotNullRef</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\Vehicle\Vehicle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\CrashPredictor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\Scene\Scene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\Vehicle\VehicleReport.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\Vehicle\VehicleInfo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ExLog\ExLog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\Scene\ContractCallBack\ContactCallback.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HTTPInterface\HTTPInterface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugInterface\DebugDraw.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\TrafficLight\TrafficLight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\TrafficLight\TrafficLightReport.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashPredictor\Vehicle\VehicleNotification.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NotNull\NotNull.hpp">
+      <Filter>源文件\NotNullRef</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Vehicle\Vehicle.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\CrashPredictor.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Scene\CrashInfo\CrashInfo.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Scene\PredictOption\PredictOption.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Scene\Scene.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Vehicle\VehicleReport.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Vehicle\VehicleInfo.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Exception\Exception.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Vehicle\VehicleID.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ExLog\ExLog.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Scene\ContractCallBack\ContactCallback.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HTTPInterface\HTTPInterface.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Exception\Exception.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugInterface\DebugDraw.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="httplib\httplib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\TrafficLight\TrafficLight.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\TrafficLight\TrafficLightReport.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\TrafficLight\TrafficLightProps.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashPredictor\Vehicle\VehicleNotification.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
