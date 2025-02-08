@@ -14,7 +14,7 @@ void HTTPInterface::registerInterface() {
         setDefaultResponseHeader(res);
         JsonDocument response;
         response["error_status"] = "OK";
-        //LOG_I << "get_info request from " << req.remote_addr << ':' << req.remote_port;
+        //LOG_D << "get_info request from " << req.remote_addr << ':' << req.remote_port;
 
 
         try {
@@ -44,7 +44,7 @@ void HTTPInterface::registerInterface() {
         JsonDocument request;
         JsonDocument response;
         response["error_status"] = "OK";
-        LOG_I << "post-report request from " << req.remote_addr << ':' << req.remote_port;
+        LOG_D << "post-report request from " << req.remote_addr << ':' << req.remote_port;
         try {
             auto desErr = deserializeJson(request, req.body);
             if (desErr != DeserializationError::Ok)
@@ -302,9 +302,15 @@ void HTTPInterface::vehicleReport(const ArduinoJson::JsonDocument &req, ArduinoJ
     auto jVelocity = getJsonProp<JsonObjectConst>(jReport, "velocity");
     report.velocity.linear = getJsonProp<float>(jVelocity, "linear");
     report.velocity.angular = getJsonProp<float>(jVelocity, "angular");
-    auto jAccleration = getJsonProp<JsonObjectConst>(jReport, "accleration");
-    report.accleration.linear = getJsonProp<float>(jAccleration, "linear");
-    report.accleration.angular = getJsonProp<float>(jAccleration, "angular");
+    
+    if(not jReport["accleration"].isNull()){
+        auto jAccleration = getJsonProp<JsonObjectConst>(jReport, "accleration");
+        report.accleration.emplace();
+        report.accleration->linear = getJsonProp<float>(jAccleration, "linear");
+        report.accleration->angular = getJsonProp<float>(jAccleration, "angular");
+    }
+    else
+        report.accleration.reset();
     predictor.vehicleReport(report);
 }
 

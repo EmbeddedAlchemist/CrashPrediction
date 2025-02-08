@@ -6,5 +6,5 @@ std::ostream &operator<<(std::ostream &out, const VehicleReport &report)
 }
 
 VehicleReport::VehicleReport(){
-    std::time(&timestamp);
+    timestamp = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
 }

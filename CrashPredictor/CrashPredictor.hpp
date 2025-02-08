@@ -12,6 +12,7 @@
 #include "TrafficLight/TrafficLight.hpp"
 #include "TrafficLight/TrafficLightReport.hpp"
 
+
 class CrashPredictor{
 
 private:
@@ -29,6 +30,7 @@ private:
 	std::vector<std::shared_ptr<TrafficLight>>::iterator findTrafficLightIterByID(TrafficLightID id);
 	bool isTrafficLightRegistered(TrafficLightID id);
 
+	long long lastReportTime = 0;
 
 public:
 	void registerVehicle(const VehicleInfo &info);

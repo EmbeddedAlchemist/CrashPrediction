@@ -3,7 +3,8 @@
 #include "VehicleID.hpp"
 #include <ostream>
 #include <ctime>
-
+#include <optional>
+#include <chrono>
 
 struct VehiclePosition {
     float x;
@@ -22,11 +23,11 @@ struct VehicleAcceleration {
 };
 
 struct VehicleReport{
-    std::time_t timestamp;
+    long long timestamp; //ms
     VehicleID id;
     VehiclePosition position;
     VehicleVelocity velocity;
-    VehicleAcceleration accleration;
+    std::optional<VehicleAcceleration> accleration;
 
     VehicleReport();
 

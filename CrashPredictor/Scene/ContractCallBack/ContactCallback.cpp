@@ -4,7 +4,7 @@
 #include <ExLog/ExLog.hpp>
 
 void ContactCallback::calcContactResult(std::pair < b2Body *, b2Body *> rec) {
-    if (*reinterpret_cast<int *>(rec.first->GetUserData().pointer) != 1 &&
+    if (*reinterpret_cast<int *>(rec.first->GetUserData().pointer) != 1 ||
         *reinterpret_cast<int *>(rec.second->GetUserData().pointer) != 1){
         //LOG_D << "not vehicle";
         return;
@@ -21,10 +21,13 @@ void ContactCallback::calcContactResult(std::pair < b2Body *, b2Body *> rec) {
     float diffAbsAngle = std::min(std::abs(vehAAngle - vehBAngle), std::abs(vehBAngle - vehAAngle));
     Vehicle *vehA = reinterpret_cast<Vehicle *>(rec.first->GetUserData().pointer);
     Vehicle *vehB = reinterpret_cast<Vehicle *>(rec.second->GetUserData().pointer);
-    const char *vehAReason = nullptr;
-    const char *vehBReason = nullptr;
 
-    LOG_D << vehAAngle << vehBAngle;
+    if (vehA == nullptr || vehB == nullptr) return;
+
+    const char * vehAReason = "unknown";
+    const char * vehBReason = "unknown";
+
+    //LOG_D << vehAAngle << vehBAngle;
 
 
     if (diffAbsAngle < 0.7853f) {
@@ -43,11 +46,8 @@ void ContactCallback::calcContactResult(std::pair < b2Body *, b2Body *> rec) {
     else {
         vehAReason = vehBReason = "opposite";
     }
-
-    vehA->getPredictStatusBufRef().contact = VehiclePredictContactResult(vehB->getId(), vehAReason);
-    vehB->getPredictStatusBufRef().contact = VehiclePredictContactResult(vehA->getId(), vehBReason);
-
-
+        vehA->predictStatusBuf.contact = std::optional<VehiclePredictContactResult>(VehiclePredictContactResult(vehB->getId(), std::move(std::string(vehAReason))));
+        vehB->predictStatusBuf.contact = std::optional<VehiclePredictContactResult>(VehiclePredictContactResult(vehA->getId(), std::move(std::string(vehBReason))));
 }
 
 void ContactCallback::BeginContact(b2Contact *contact){

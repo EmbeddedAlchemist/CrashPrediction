@@ -19,10 +19,12 @@ std::thread httpThread([&]() {
 
 std::thread predictThread([&]() {
     while (true) {
+        auto nextPredict = std::chrono::steady_clock::now() + std::chrono::microseconds(50);
         auto res = predictor.predict({ 0.01, 3, 4.2 });
         if (res.size() > 0) {
-            LOG_I << "Crash detected!";
+            //LOG_I << "Crash detected!";
         }
+        std::this_thread::sleep_until(nextPredict);
     }
     });
 

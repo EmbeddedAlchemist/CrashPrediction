@@ -35,7 +35,7 @@ private:
 	friend class CrashPredictor;
 	void vehicleRegister(std::shared_ptr<Vehicle> &vehicle);
 	void vehicleUnregister(std::shared_ptr<Vehicle> &vehicle);
-	void vehicleReport(std::shared_ptr<Vehicle> &vehicle, const VehicleReport &report);
+	void vehicleReport(std::shared_ptr<Vehicle> &vehicle);
 	void trafficLightReport(std::shared_ptr<TrafficLight> &trafficLight, const TrafficLightReport &report);
 
 public:
@@ -47,7 +47,7 @@ public:
 	Scene(Scene& scene);
 	~Scene();
 
-	void run();
+	void run(long long ms);
 	std::vector<CrashInfo> predict(const PredictOption& option);
 	void calculateRecommendVelocity();
 

@@ -12,7 +12,7 @@ class Vehicle;
 
 
 struct VehiclePredictContactResult {
-	inline VehiclePredictContactResult(VehicleID id, const std::string &&reason) :id(id), reason(reason) {}
+	inline VehiclePredictContactResult(VehicleID id, std::string reason) :id(id), reason(reason) {}
 
 	VehicleID id;
 	std::string reason; //tailgate_front tailgate_back side opposite
@@ -23,6 +23,7 @@ struct VehiclePredictContactResult {
 struct VehiclePredictStatus {
 	std::optional<VehiclePredictContactResult> contact = std::nullopt;
 	std::optional<float> recommendSpeed = std::nullopt;
+
 };
 
 class Vehicle {
@@ -32,7 +33,7 @@ private:
 	const VehicleInfo info;
 	b2Body* b2body = nullptr;
 	std::queue<VehicleReport> historyReport;
-
+	VehicleAcceleration caculatedAcceleration = {.0f, .0f};
 
 private:
 	friend class Scene;
@@ -41,8 +42,6 @@ private:
 	void bindB2Body(b2Body *body);
 	b2Body *getB2Body();
 	
-	VehicleAcceleration caculateAcceleration();
-
 	VehicleReport getLastReport();
 
 
@@ -67,6 +66,7 @@ public:
 
 private:
 	VehiclePredictStatus predictStatus;
+public:
 	VehiclePredictStatus predictStatusBuf;
 
 public:
@@ -74,9 +74,9 @@ public:
 		return predictStatus;
 	}
 
-	inline void clearPredictStatus() {
-		predictStatusBuf.contact = std::nullopt;
-		predictStatusBuf.recommendSpeed = std::nullopt;
+	inline void clearPredictStatusBuf() {
+		predictStatusBuf.contact.reset();
+		predictStatusBuf.recommendSpeed.reset();
 	}
 
 	inline void commitPredictStatus(const VehiclePredictStatus &status) {
